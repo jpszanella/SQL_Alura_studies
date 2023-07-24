@@ -39,11 +39,16 @@
 		A.CODIGO = B.CODIGO_DO_PRODUTO -- igualando os dois preços de A e B
 
 III) Ø Utilizando MERGE
-			§ MERGE <tabela que gostaria de se alterar> USING <tabela de referência> 
-			ON <clausula de referência> = <clausula de referência> 
-			WHEN MATCHED THEN -- quando valores forem iguais
-			UPDATE SET <clausula de referência 2> = <clausula de referência 2> 
+	§ MERGE <tabela que gostaria de se alterar> USING <tabela de referência> 
+	ON <clausula de referência> = <clausula de referência> 
+	WHEN MATCHED THEN -- quando valores forem iguais
+	UPDATE SET <clausula de referência 2> = <clausula de referência 2> 	
+Ø Excluindo dados de uma tabela -> apenas quando não há uma referência de primary  ou foreign key
+	§ DELETE FROM <nome da tabela> WHERE (<condição>)
 			
-		Ø Excluindo dados de uma tabela -> apenas quando não há uma referência de primary  ou foreign key
-			§ DELETE FROM <nome da tabela> WHERE (<condição>)
+6. Transação no SQL Server -> unidade lógica de processamento de dados que visa preservar a integridade e consistência dos dados
+	Ø BEGIN TRANSACTION  -- salva um estado do banco de dados, armazenado localmente
+		COMMIT (confirma tudo o que foi feito de, temporariamente, de forma definitiva) ou ROLLBACK  (volta ao estado primitivo do banco de dados, sem modificação estrutural)
+	-- A utilização de dois ROLLBACK fica atrelada à necessidade de ser intercalada por outros 'BEGIN TRANSACTION', isso, porque quando scriptamos uma clausula de 
+	--ROLLBACK, retorna-se a informação anterior a qualquer modificação -> caso não fosse intercalada, seria um processo infinito de retorno;
 
