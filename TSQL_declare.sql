@@ -27,3 +27,43 @@
       PRINT @FERIAS
       PRINT @BAIRRO
       -- exibe o valor da variável, no campo de mensagens
+
+2. 1. Atribuição de valor para uma variável
+DECLARE @MATRICULA VARCHAR (5); -- declaração como se fosse coluna da tabela
+      DECLARE @NOME VARCHAR (100);
+      DECLARE @PERCENTUAL FLOAT;
+      DECLARE @DATA DATE;
+      DECLARE @FERIAS BIT;
+      DECLARE @BAIRRO VARCHAR(50);
+ SET @MATRICULA = '00240';
+      SET @NOME = 'Claúdia Rodrigues';
+      SET @PERCENTUAL = 0.10;
+      SET @DATA = '2012-03-12';
+      SET @FERIAS = 1;
+      SET @BAIRRO = 'Jardins'
+PRINT @MATRICULA 
+      PRINT @NOME
+      PRINT @PERCENTUAL
+      PRINT @DATA
+      PRINT @FERIAS
+      PRINT @BAIRRO
+INSERT INTO [TABELA DE VENDEDORES] -- inserindo novos valores para os parâmetros declarados
+(MATRICULA, NOME, [PERCENTUAL COMISSÃO], [DATA ADMISSÃO], [DE FERIAS], BAIRRO)
+VALUES -- valores armazenados nos elementos declarados
+(@MATRICULA, @NOME, @PERCENTUAL, @DATA, @FERIAS, @BAIRRO)
+PRINT 'UM VENDEDOR INCLUÍDO'
+SET @MATRICULA = '00244';
+      SET @NOME = 'Roberta Araujo';
+PRINT @MATRICULA 
+      PRINT @NOME
+      PRINT @PERCENTUAL
+      PRINT @DATA
+      PRINT @FERIAS
+      PRINT @BAIRRO
+INSERT INTO [TABELA DE VENDEDORES] -- repete-se o código por haver uma nova paramerização, com outro dado
+(MATRICULA, NOME, [PERCENTUAL COMISSÃO], [DATA ADMISSÃO], [DE FERIAS], BAIRRO)
+VALUES -- valores armazenados nos elementos declarados
+(@MATRICULA, @NOME, @PERCENTUAL, @DATA, @FERIAS, @BAIRRO)
+PRINT 'UM VENDEDOR INCLUÍDO'
+
+SELECT * FROM [TABELA DE VENDEDORES]
