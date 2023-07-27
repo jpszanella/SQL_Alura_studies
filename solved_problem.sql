@@ -4,7 +4,7 @@
 		○ Volume de compra = quantidade de produtos comprados, sem limite de compras dos clientes
 		○ A ideia é encontrar quais clientes compraram mais do que o volume de compras delimitado por eles? 
 	I) Calcular o volume de venda, por clientes (selecionar a data da venda e a quantidade vendida e o CPF)
-		Ø SELECT NF.CPF, NF.DATA_VENDA, INF.QUANTIDADE
+		Ø SELECT NF.CPF, NF.DATA_VENDA, INF.QUANTIDADEE
 			FROM NOTAS_FISCAIS NF 
 			INNER JOIN ITENS_NOTAS_FICAIS INF ON NF.NUMERO.NUMERO = INF.NUMERO
 		-- quantidade por cada CPF, por data.
