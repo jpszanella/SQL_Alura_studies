@@ -1,20 +1,20 @@
-	3. Incluindo dados no nosso dataframe e nas tabelas criadas: leitura de .csv e arquivos externos
-		• Sintaxe global para inserção de novos dados em uma tabela
-		Ø INSERT INTO <nome da tabela> --deve haver uma correspondência entre nomes e valores
-		(<campos da tabela, campo da tabela...) --quando não se escreve o nome dos campos, valores devem inseridos em ordem de criação
-		VALUES
-		(<valores, valores, valores...)
+3. Incluindo dados no nosso dataframe e nas tabelas criadas: leitura de .csv e arquivos externos
+Sintaxe global para inserção de novos dados em uma tabela
+INSERT INTO <nome da tabela> --deve haver uma correspondência entre nomes e valores
+	(<campos da tabela, campo da tabela...) --quando não se escreve o nome dos campos, valores devem inseridos em ordem de criação
+	VALUES
+	(<valores, valores, valores...)
 		
-		Ø INSERT INTO PRODUTOS
-		(CODIGO, DESCRITOR, SABOR, TAMANHO, EMBALAGEM, PRECO_LISTA)
-		VALUES --como CODIGO é primary key, só aceita valores únicos
-		('1040107', 'Light - 350 ml - Melância', 'Melância', '350ml', 'Lata', 4.56),
-		('10401nn', 'Light - 350 ml  - '-', '-', '350ml', 'Lata', 4.56)
+INSERT INTO PRODUTOS
+	(CODIGO, DESCRITOR, SABOR, TAMANHO, EMBALAGEM, PRECO_LISTA)
+	VALUES --como CODIGO é primary key, só aceita valores únicos
+	('1040107', 'Light - 350 ml - Melância', 'Melância', '350ml', 'Lata', 4.56),
+	('10401nn', 'Light - 350 ml  - '-', '-', '350ml', 'Lata', 4.56)
 		
-	  -- Incluindo múltiplos registros - incluir um banco de dados, dentro do nosso dataframe:
+Incluindo múltiplos registros - incluir um banco de dados, dentro do nosso dataframe:
 		
-		--partindo da recuperação de um arquivo de backup
-		--"restaurar novo banco de dados" -> "dispositivo" -> "arquivo" -> "opções" -> "substituir banco de dados"
+		partindo da recuperação de um arquivo de backup
+		"restaurar novo banco de dados" -> "dispositivo" -> "arquivo" -> "opções" -> "substituir banco de dados"
 		
 		SELECT * FROM SUCOS_FRUTAS.DBO.TABELA_DE_PRODUTOS; --visualizar uma outra tebela de uma outra database
 		--seleção na tabela da direita, com a tabela da esquerda -> obedecendo a correspondência de nomes e tipos
