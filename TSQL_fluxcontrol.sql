@@ -42,7 +42,7 @@ IF @DIA_SEMANA = 'Domingo' or @DIA_SEMANA = 'Sábado'
 ELSE
 	PRINT 'Este dia é dia de semana'
 
-  6.1. Modificação com UPDATE:
+- 6.1. Modificação com UPDATE:
 DECLARE @CPF VARCHAR(15);
 DECLARE @IDADE_TABELA INT;
 DECLARE @DATA_NASCIMENTO DATE;
@@ -72,3 +72,52 @@ IF @LIMITE_MAXIMO >= @LIMITE_ATUAL  -- valor de Água Santa é 50.000 e valor ma
 	PRINT 'VALOR ESTOUROU';
 ELSE
 	PRINT 'VALOR NÃO ESTOUROU';
+
+8. WHILE: caso a condição seja verdadeira, segue o bloco de comandos
+WHILE <expressão lógica> 
+	<sentença SQL ou controle de bloco ou BREAK ou CONTINUE> 
+- BREAK provoca uma saída do loop e CONTINUE faz com que o loop seja reiniciado (desde o princípio)
+DECLARE @LIMITE_MINIMO INT;
+DECLARE @LIMITE_MAXIMO INT;
+DECLARE @NUM_LINHAS_MAX INT;
+DECLARE @NUM_LINHAS_ESCRITAS INT;
+-- inicializando as variáveis
+SET @LIMITE_MINIMO = 3;
+SET @LIMITE_MAXIMO = 30;
+SET @NUM_LINHAS_MAX = 10; -- delimita o número de linhas em 10
+SET @NUM_LINHAS_ESCRITAS = 0; -- sem linhas escritas, inicialmente
+	PRINT 'Entrei no looping'
+-- criação de um loop até ultrapassar o limite máximo
+-- criar um BREAK em que o limite de linhas nçao ultrapasse 10:
+WHILE @LIMITE_MINIMO <= @LIMITE_MAXIMO -- caso o numero de linhas não ultrapasse 10, ele retorna para essa posição
+BEGIN
+	PRINT @LIMITE_MINIMO;
+	SET @NUM_LINHAS_ESCRITAS = @NUM_LINHAS_ESCRITAS + 1;
+	IF @NUM_LINHAS_ESCRITAS = @NUM_LINHAS_MAX --- caso o limite chegue a 10
+		BEGIN
+			PRINT 'SAINDO DO LOOPING POR CAUSA DO BREAK';
+			BREAK
+		END
+	SET @LIMITE_MINIMO = @LIMITE_MINIMO + 1;
+END;
+	PRINT 'Saí do looping';
+
+- 8.1. -- declara as 3 variáveis
+DECLARE @DATA_INICIAL DATE;
+DECLARE @DATA_FINAL DATE;
+DECLARE @NUMNOTAS INT -- número de notas=NUMERO em tabela de notas
+
+SET @DATA_INICIAL = '20170101';
+SET @DATA_FINAL = '20170110';
+WHILE @DATA_INICIAL <= @DATA_FINAL
+BEGIN
+	SELECT @NUMNOTAS = COUNT(*) FROM [NOTAS FISCAIS]
+	WHERE DATA = @DATA_INICIAL
+	PRINT CONVERT(VARCHAR(10), @DATA_INICIAL) + '-->'
+	+ CONVERT(VARCHAR(10), @NUMNOTAS)
+	SELECT @DATA_INICIAL = DATEADD(DAY, 1, @DATA_INICIAL)
+END
+
+
+
+
